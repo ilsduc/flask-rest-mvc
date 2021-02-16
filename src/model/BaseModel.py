@@ -141,6 +141,9 @@ class BaseModel(JsonSerializable):
         
         rows = that.db.safe_fetch('fetchall', query)
 
+        if rows is None:
+            return []
+
         return that.hydrate_collection(rows)
 
     def remove (that):

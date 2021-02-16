@@ -16,14 +16,25 @@ services:
     image: postgres:12-alpine
     environment:
       POSTGRES_DB: api
-      POSTGRES_USER: pg_user
+      POSTGRES_USER: api_user
       POSTGRES_PASSWORD: "!ChangeMe!"
       TZ: "Europe/Paris"
     ports:
       - "5432:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data/
+      - datas:/var/lib/postgresql/data/
     restart: always
+  # react client
+  client:
+    image: node:latest
+    working_dir: /app
+    command: "npm run start"
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/:/app/
   # pgadmin dashboard
   pgadmin:
     image: dpage/pgadmin4
@@ -40,5 +51,5 @@ services:
       - 8000:80
 
 volumes:
-  db_data:
+  datas:
   pgadmin:

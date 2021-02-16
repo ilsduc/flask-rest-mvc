@@ -1,0 +1,11 @@
+{
+    "name": "Contraint 1",
+    "constraints": [
+        {
+            "name": "Contraint 1"
+        },
+        {
+            "name": "Contraint 2"
+        }
+    ]
+}
