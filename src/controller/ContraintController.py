@@ -6,12 +6,23 @@ from model.Constraint import Constraint
 from werkzeug.utils import secure_filename
 from service.FileUploader import FileUploader
 
+def format_constraint (constraint_name):
+    constraint = Constraint(constraint_name)
+    content = constraint.get_content()
+    return {
+        'name': constraint.get_name(),
+        'content': content,
+    }
+
 class ConstraintController(APIController):
 
     @classmethod
     def getList(self):
         constraints = DirectoryParser.read_directory('datas/constraints')
-        return self.success(constraints)
+        res = []
+        for constraint_name in constraints:
+            res.append(format_constraint(constraint_name))
+        return self.success(res)
         
     @classmethod
     def get_one(self, name):

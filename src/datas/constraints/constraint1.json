@@ -7,5 +7,13 @@
         {
             "name": "Contraint 2"
         }
-    ]
+    ],
+    "user": {
+        "firstname": "Ilan",
+        "lastname": "Ducret",
+        "best_friend": {
+            "firstname": "Antoine",
+            "lastname": "Richaud"
+        }
+    }
 }
