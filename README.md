@@ -22,6 +22,12 @@ You must have Docker and Docker Compose installed, if it's not done yet, please 
 $ make init
 ```
 
+1. `(bis)` Install client dev dependencies
+
+```bash
+$ make install_dev_dependencies
+```
+
 2. Run apps
 
 ```bash
@@ -32,7 +38,8 @@ $ make start
 
 Then ...
 
-- Hits http://localhost:5000/demos for get demos
+- Hits http://localhost:5000 for API endpoints
+- Hits http://localhost:3000 for client part
 - Hits http://localhost:8000 to connect to PG Admin
 
 # Create the connection with PG admin
@@ -44,4 +51,4 @@ Then ...
 5. In the 'connection' tab, fill the host whith the database service name `db` and the others information as there are filled in `docker-compose.yml` (`POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`) and save.
 6. In the new connection explore to Servers > `<your server name>` > Databases > `<your database>` > Schemas > public
 7. Click right on Tables >> Query Tool
-8. Paste the create demo table statment from create_table_demo.sql and execute it !
+8. Paste the create demo table statment from `create_table_demo.sql` and execute it !
