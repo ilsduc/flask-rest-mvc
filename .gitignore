@@ -1,1 +1,4 @@
+# mac os files
+.DS_Store
+# remove pycaches
 **/__pycache__
