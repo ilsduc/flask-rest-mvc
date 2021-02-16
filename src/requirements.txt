@@ -1,0 +1,6 @@
+flask==1.0
+flask-cors
+uwsgi
+psycopg2
+numpy
+TA-lib

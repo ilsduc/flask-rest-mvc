@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  # flask api
+  flask:
+    image: flask
+    build:
+      context: ./src
+    environment:
+      FLASK_ENV: development
+    ports:
+      - 5000:5000
+    volumes:
+      - "./src/:/src"
+  # database
+  db:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_DB: api
+      POSTGRES_USER: pg_user
+      POSTGRES_PASSWORD: "!ChangeMe!"
+      TZ: "Europe/Paris"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    restart: always
+  # pgadmin dashboard
+  pgadmin:
+    image: dpage/pgadmin4
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: demo@demo.fr
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - pgadmin:/Users/pg_user/.pgadmin
+    ports:
+      - 8000:80
+
+volumes:
+  db_data:
+  pgadmin:
